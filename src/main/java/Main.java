@@ -1,17 +1,13 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        String rawOrderPrice = scanner.next();
+        String rawOrderPrice = InputView.readTotalPrice();
         int orderPrice = Integer.parseInt(rawOrderPrice);
         int discountPrice = calculateDiscountPrice(orderPrice);
         int deliveryFee = calculateDeliveryFee(orderPrice);
 
-        System.out.printf("총 주문 금액: %d원%n", orderPrice - discountPrice + deliveryFee);
-        System.out.printf("적용 할인 금액: %d원%n", discountPrice);
-        System.out.printf("배송비: %d원%n", deliveryFee);
+        int totalOrderPrice = orderPrice - discountPrice + deliveryFee;
+
+        OutputView.printResult(totalOrderPrice, discountPrice, deliveryFee);
     }
 
     private static int calculateDiscountPrice(int orderPrice) {
