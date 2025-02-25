@@ -1,6 +1,6 @@
 public class DiscountCalculator {
-    public static int discount(String customerType, int priceTotal) {
-        if (customerType.equals("VIP")) {
+    public static int discount(CustomerType customerType, int priceTotal) {
+        if (customerType == CustomerType.VIP) {
             if (priceTotal >= 50_000) {
                 return 5_000;
             }

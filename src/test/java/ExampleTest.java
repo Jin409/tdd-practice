@@ -12,7 +12,7 @@ public class ExampleTest {
         int priceTotal = 10000;
 
         // when & then
-        assertThat(DiscountCalculator.discount("", priceTotal)).isEqualTo(1000);
+        assertThat(DiscountCalculator.discount(CustomerType.GENERAL, priceTotal)).isEqualTo(1000);
     }
 
     @Test
@@ -22,7 +22,7 @@ public class ExampleTest {
         int priceTotal = 50000;
 
         // when & then
-        assertThat(DiscountCalculator.discount("", priceTotal)).isEqualTo(5000);
+        assertThat(DiscountCalculator.discount(CustomerType.GENERAL, priceTotal)).isEqualTo(5000);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class ExampleTest {
         int priceTotal = 9000;
 
         // when & then
-        assertThat(DeliveryFeeCalculator.calculate("", priceTotal)).isEqualTo(2500);
+        assertThat(DeliveryFeeCalculator.calculate(CustomerType.GENERAL, priceTotal)).isEqualTo(2500);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class ExampleTest {
         int priceTotal = 10000;
 
         // when & then
-        assertThat(DeliveryFeeCalculator.calculate("", priceTotal)).isEqualTo(0);
+        assertThat(DeliveryFeeCalculator.calculate(CustomerType.GENERAL, priceTotal)).isEqualTo(0);
     }
 
     @Test
@@ -50,9 +50,11 @@ public class ExampleTest {
     void test5() {
         // given
         int priceTotal = 15000;
+        int discountedPrice = 1000;
+        int deliveryFee = 0;
 
         // when & then
-        assertThat(FinalPriceCalculator.calculate("", priceTotal)).isEqualTo(14000);
+        assertThat(FinalPriceCalculator.calculate(priceTotal, discountedPrice, deliveryFee)).isEqualTo(14000);
     }
 
     @Test
@@ -62,7 +64,7 @@ public class ExampleTest {
         int priceTotal = 15000;
 
         // when & then
-        assertThat(DiscountCalculator.discount("VIP", priceTotal)).isEqualTo(2000);
+        assertThat(DiscountCalculator.discount(CustomerType.VIP, priceTotal)).isEqualTo(2000);
     }
 
     @Test
@@ -72,7 +74,7 @@ public class ExampleTest {
         int priceTotal = 50000;
 
         // when & then
-        assertThat(DiscountCalculator.discount("VIP", priceTotal)).isEqualTo(5000);
+        assertThat(DiscountCalculator.discount(CustomerType.VIP, priceTotal)).isEqualTo(5000);
     }
 
     @Test
@@ -82,7 +84,7 @@ public class ExampleTest {
         int priceTotal = 15000;
 
         // when & then
-        assertThat(DeliveryFeeCalculator.calculate("VIP", priceTotal)).isEqualTo(0);
+        assertThat(DeliveryFeeCalculator.calculate(CustomerType.VIP, priceTotal)).isEqualTo(0);
     }
 
     @Test
@@ -90,9 +92,11 @@ public class ExampleTest {
     void test9() {
         // given
         int priceTotal = 60000;
+        int discountedPrice = 5000;
+        int deliveryFee = 0;
 
         // when & then
-        assertThat(FinalPriceCalculator.calculate("VIP", priceTotal)).isEqualTo(55000);
+        assertThat(FinalPriceCalculator.calculate(priceTotal, discountedPrice, deliveryFee)).isEqualTo(55000);
     }
 
 

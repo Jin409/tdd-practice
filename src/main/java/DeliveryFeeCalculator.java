@@ -1,7 +1,7 @@
 public class DeliveryFeeCalculator {
 
-    public static int calculate(String customerType, int priceTotal) {
-        if (customerType.equals("VIP")) {
+    public static int calculate(CustomerType customerType, int priceTotal) {
+        if (customerType == CustomerType.VIP) {
             return 0;
         }
 
