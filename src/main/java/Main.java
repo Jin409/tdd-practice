@@ -16,44 +16,16 @@ public class Main {
 
     private static int calculateDiscountPrice(CustomerType customerType, int orderPrice) {
         if (customerType == CustomerType.VIP) {
-            return calculateDiscountPriceForVIP(orderPrice);
+            return CustomerType.VIP.discount(orderPrice);
         }
-
-        if (orderPrice >= 50_000) {
-            return 5_000;
-        }
-
-        if (orderPrice >= 10_000) {
-            return 1_000;
-        }
-
-        return 0;
-    }
-
-    private static int calculateDiscountPriceForVIP(int orderPrice) {
-
-        if (orderPrice >= 50_000) {
-            return 5_000;
-        }
-
-        if (orderPrice >= 10_000) {
-            return 2_000;
-        }
-
-        return 0;
+        return CustomerType.GENERAL.discount(orderPrice);
     }
 
     private static int calculateDeliveryFee(CustomerType customerType, int orderPrice) {
-
-        int deliveryFee = 0;
-
         if (customerType == CustomerType.VIP) {
-            return 0;
+            return CustomerType.VIP.discountDeliveryFee(orderPrice);
         }
-
-        if (orderPrice < 10_000) {
-            deliveryFee += 2_500;
-        }
-        return deliveryFee;
+        return CustomerType.GENERAL.discountDeliveryFee(orderPrice);
     }
+}
 }
